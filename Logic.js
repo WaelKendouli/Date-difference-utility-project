@@ -94,3 +94,67 @@
         return Math.max(0,years);
       }
 
+
+      function calculateDateDiff()
+      {
+        const startVal = startDateInput.value;
+        const endVal = endDateInput.value;
+
+          if (!startVal || !endVal) {
+          showMessage("bad", "❌ Please choose BOTH start and end dates.");
+          resetOutputs();
+          return;
+        }
+
+        let start = stripTime(parseDateInput(startVal));
+        let end = stripTime(parseDateInput(endVal));
+            if (start > end) {
+                if (autoSwapInput.checked) {
+                    [start , end] = [end , start];
+                    showMessage(
+              "neutral",
+              "📌 Dates were swapped (start was after end)."
+            );
+                }
+                else
+                {
+                    showMessage(
+              "bad",
+              "❌ Start date must be before end date (or enable auto-swap)."
+            );
+            resetOutputs();
+            return; 
+                }
+                }
+                else
+                {
+                              showMessage("good", "✅ Date difference calculated successfully.");
+                }
+
+               let totalDays = Math.round((end - start) / msPerDay);
+
+               if (inclusiveDaysInput.checked) {
+          totalDays += 1;
+             }
+
+             let totalWeeks = Math.round(totalDays / 7);
+             const calMonths = diffCalendarMonths(start , end);
+             const calYears = diffCalendarYears(start , end);
+
+               outDays.textContent = totalDays.toLocaleString();
+        outWeeks.textContent = totalWeeks.toFixed(2);
+        outMonths.textContent = calMonths.toLocaleString();
+        outYears.textContent = calYears.toLocaleString();
+
+        // ✅ Update explanation lines
+        rangeLine.textContent = `Range: ${formatDate(start)} → ${formatDate(
+          end
+        )}`;
+
+        breakdownLine.textContent = `Breakdown: ${totalDays.toLocaleString()} days ≈ ${totalWeeks.toFixed(
+          2
+        )} weeks | ${calMonths.toLocaleString()} full months | ${calYears.toLocaleString()} full years`;
+
+        setStatus("Calculated ✅");
+
+      }
