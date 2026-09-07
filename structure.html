@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>DateDiff Utility — Modern UI</title>
+
+  </head>
+
+  <body>
+    <div class="app">
+      <!-- ✅ Header (title + today chip) -->
+      <header>
+        <div class="title">
+          <h1>🧮 DateDiff Utility</h1>
+          <p>
+            Compare two dates and get the difference (days / weeks / months /
+            years).
+          </p>
+        </div>
+        <div class="chip" id="todayChip">Today: —</div>
+      </header>
+
+      <div class="grid">
+        <!-- ✅ Inputs -->
+        <section class="card">
+          <div class="cardHead">
+            <h2>🧾 Inputs</h2>
+            <span class="chip">Vanilla JS • Accurate Date Math</span>
+          </div>
+
+          <div class="cardBody">
+            <!-- ✅ Start + End dates -->
+            <div class="row2">
+              <label>
+                <div class="labelRow">
+                  <span>Start Date</span>
+                  <span>(Required)</span>
+                </div>
+                <input id="startDate" type="date" />
+              </label>
+
+              <label>
+                <div class="labelRow">
+                  <span>End Date</span>
+                  <span>(Required)</span>
+                </div>
+                <input id="endDate" type="date" />
+              </label>
+            </div>
+
+            <!-- ✅ Options -->
+            <div class="toggleRow">
+              <label
+                class="switch"
+                title="If enabled, swaps dates if start is after end."
+              >
+                <input id="autoSwap" type="checkbox" checked />
+                <span>Auto-swap if start &gt; end</span>
+              </label>
+
+              <label
+                class="switch"
+                title="If enabled, include both start and end day in day counting."
+              >
+                <input id="inclusiveDays" type="checkbox" />
+                <span>Inclusive day count</span>
+              </label>
+            </div>
+
+            <!-- ✅ Actions -->
+            <div class="btnRow">
+              <button class="primary" id="btnCalc">Calculate Difference</button>
+              <button id="btnDemo">Demo (Last 90 Days)</button>
+              <button id="btnClear">Clear</button>
+            </div>
+
+            <!-- ✅ Message area -->
+            <div class="msg" id="msgBox">
+              Tip: Pick start/end dates, then click “Calculate Difference”.
+            </div>
+
+            <div class="smallLine">
+              🔹 “Months/Years” are calculated using real calendar boundaries
+              (not just days ÷ 30).<br />
+              🔹 “Days/Weeks” use exact day difference.
+            </div>
+          </div>
+        </section>
+
+        <!-- ✅ Results -->
+        <section class="card">
+          <div class="cardHead">
+            <h2>📊 Results</h2>
+            <span class="chip" id="statusChip">Waiting…</span>
+          </div>
+
+          <div class="cardBody stats">
+            <!-- ✅ Output stats -->
+            <div class="statGrid">
+              <div class="stat">
+                <div class="k">Total Days</div>
+                <div class="v" id="outDays">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="k">Total Weeks</div>
+                <div class="v" id="outWeeks">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="k">Calendar Months</div>
+                <div class="v" id="outMonths">—</div>
+              </div>
+
+              <div class="stat">
+                <div class="k">Calendar Years</div>
+                <div class="v" id="outYears">—</div>
+              </div>
+            </div>
+
+            <!-- ✅ Extra explanation lines -->
+            <div class="smallLine" id="rangeLine">Range: —</div>
+            <div class="smallLine" id="breakdownLine">Breakdown: —</div>
+          </div>
+        </section>
+      </div>
+
+      <div class="footerNote">
+        Built with ❤️ using HTML + CSS + JavaScript (no libraries)
+      </div>
+    </div>
+  </body>
+</html>
