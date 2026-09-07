@@ -68,4 +68,17 @@
         breakdownLine.textContent = "Breakdown: —";
         setStatus("Waiting…");
       }
-      
+
+
+      function diffCalendarMonths(start , end)
+      {
+        let MonthsDiff = ((start.getFullYear() - end.getFullYear()) * 12) +
+        (end.getMonth() - start.getMonth());
+
+        if (end.getDate() > start.getDate()) {
+            MonthsDiff--;
+        }
+
+        return Math.max(0,MonthsDiff);
+
+      }
