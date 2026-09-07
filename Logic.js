@@ -72,7 +72,7 @@
 
       function diffCalendarMonths(start , end)
       {
-        let MonthsDiff = ((start.getFullYear() - end.getFullYear()) * 12) +
+        let MonthsDiff = ((end.getFullYear() - start.getFullYear()) * 12) +
         (end.getMonth() - start.getMonth());
 
         if (end.getDate() > start.getDate()) {
@@ -82,3 +82,15 @@
         return Math.max(0,MonthsDiff);
 
       }
+
+      function diffCalendarYears(start , end)
+      {
+        let years = end.getFullYear() - start.getFullYear();
+
+        if (start.getMonth() > end.getMonth() ||
+         (start.getMonth()===end.getMonth() && start.getDate() > end.getDate())) {
+            years -= 1;
+        }
+        return Math.max(0,years);
+      }
+
