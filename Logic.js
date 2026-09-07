@@ -158,3 +158,43 @@
         setStatus("Calculated ✅");
 
       }
+
+      todayChip.textContent = `Today: ${formatDate(new Date())}`;
+
+      // ✅ Main calculate button
+      btnCalc.addEventListener("click", calculateDateDiff);
+
+      btnDemo.addEventListener("click" , () => {
+        const end = stripTime(new Date());
+        const start = new Date(end);
+        start.setDate(start.getDate()-90);
+
+        const toISO = (d) => {
+          const yyyy = d.getFullYear();
+          const mm = String(d.getMonth() + 1).padStart(2, "0");
+          const dd = String(d.getDate()).padStart(2, "0");
+          return `${yyyy}-${mm}-${dd}`;
+        };
+
+        startDateInput.value = toISO(start);
+        endDateInput.value = toISO(end);
+
+        setStatus("Ready…");
+        showMessage(
+          "neutral",
+          "📌 Demo dates set (last 90 days). Click Calculate."
+        );
+      }
+      );
+
+      btnClear.addEventListener("click", () => {
+        startDateInput.value = "";
+        endDateInput.value = "";
+        autoSwapInput.checked = true;
+        inclusiveDaysInput.checked = false;
+        resetOutputs();
+        showMessage(
+          "neutral",
+          "Tip: Pick start/end dates, then click “Calculate Difference”."
+        );
+      });
