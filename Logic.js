@@ -198,3 +198,11 @@
           "Tip: Pick start/end dates, then click “Calculate Difference”."
         );
       });
+
+      [startDateInput , endDateInput , autoSwapInput , inclusiveDaysInput].forEach(
+        (elm) => {
+            elm.addEventListener("change" , () => {
+                setStatus("Ready…");
+            })
+        }
+      )
